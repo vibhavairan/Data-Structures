@@ -5,27 +5,27 @@ import java.util.*;
 
 
 public class HeightTree {
-    public static class Graph{
+    public static class MyTree{
         int height;
         int value;
         int parent;
-        ArrayList<Graph> children;
+        ArrayList<MyTree> children;
     }
-    public static void addchild(Graph par, Graph child)
+    public static void addchild(MyTree par, MyTree child)
     {
         par.children.add(child);
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        ArrayList<Graph> graph = new ArrayList<>();
+        ArrayList<MyTree> graph = new ArrayList<>();
         int root=-1;
         for(int x=0;x<n;x++)
         {
-            Graph node = new Graph();
+            MyTree node = new MyTree();
             node.parent = sc.nextInt();
             node.value = x;
-            node.children = new ArrayList<Graph>();
+            node.children = new ArrayList<MyTree>();
             graph.add(node);
         }
         for(int childIndex=0;childIndex<graph.size();childIndex++)
@@ -39,11 +39,11 @@ public class HeightTree {
                 addchild(graph.get(graph.get(childIndex).parent), graph.get(childIndex));
             }
         }
-        Graph graphRoot = graph.get(root);
-        Deque<Graph> queue = new LinkedList<Graph>();
+        MyTree graphRoot = graph.get(root);
+        Deque<MyTree> queue = new LinkedList<MyTree>();
         queue.add(graphRoot);
         int max = 0;
-        Graph p = new Graph();
+        MyTree p = new MyTree();
         while(!queue.isEmpty())
         {
             p = queue.removeFirst();
