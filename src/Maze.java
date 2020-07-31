@@ -1,15 +1,8 @@
 public class Maze {
-    static String maze(String que,String ans, int n)
+    static String maze(String que, int n)
     {
-        if(n==0)
-            return ans;
-        else
-        {
-
-        }
-
+        return "";
     }
     public static void main(String[] args){
-
     }
 }
