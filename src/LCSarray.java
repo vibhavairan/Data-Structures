@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LCSarray {
-    static int dp[][] = new int[1000][1000];
-    static int lcs(int a[], int b[], int m, int n)
+
+    static int lcs(List<Integer> a, List<Integer> b, int m, int n, int dp[][])
     {
         for(int i=0;i<m+1;i++)
         {
@@ -10,7 +12,7 @@ public class LCSarray {
             {
                 if(i==0||j==0)
                     dp[i][j] = 0;
-                else if(a[i-1]==b[j-1])
+                else if(a.get(i-1).equals(b.get(j-1)))
                     dp[i][j]= 1 + dp[i-1][j-1];
                 else
                     dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
@@ -18,7 +20,7 @@ public class LCSarray {
         }
         return dp[m][n];
     }
-    static String lcsString(int a[], int b[], int m, int n)
+   /* static String lcsString(int a[], int b[], int m, int n)
     {
         int i = m, j=n;
         String s ="";
@@ -32,28 +34,29 @@ public class LCSarray {
                 i--;
         }
         return s;
-    }
+    }*/
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        int dp[][] = new int[100000][100000];
         int m = sc.nextInt();
         int n = sc.nextInt();
-        int[] a = new int[m];
-        int[] b = new int[n];
+        List<Integer> a = new ArrayList<>();
+        List<Integer> b = new ArrayList<>();
         for(int x=0;x<m;x++)
         {
-            a[x] = sc.nextInt();
+            a.add(sc.nextInt());
         }
         for(int x=0;x<n;x++)
         {
-            b[x] = sc.nextInt();
+            b.add(sc.nextInt());
         }
-        System.out.println(lcs(a,b,m,n));
+        //System.out.println(lcs(a,b,m,n));
       /* for(int x=0;x<s1.length()+1;x++){
             for(int y=0;y<s2.length()+1;y++){
                 System.out.print(dp[x][y]+" ");
             }
             System.out.println(" ");
         }*/
-        System.out.println(lcsString(a,b,m,n));
+        System.out.println(lcs(a,b,m,n,dp));
     }
 }

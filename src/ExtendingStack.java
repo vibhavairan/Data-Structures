@@ -11,9 +11,6 @@ public class ExtendingStack {
         {
             input.add(sc.nextLine());
         }
-        /*for (String s : input) {
-            System.out.println(s);
-        }*/
         for(int x=1;x<n+1;x++)
         {
             String s = input.get(x);

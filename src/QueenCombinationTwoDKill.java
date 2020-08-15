@@ -70,4 +70,8 @@ public class QueenCombinationTwoDKill {
         int tq = sc.nextInt();
         combinations(new boolean[m][n], tq, 0, "", 0, 0);
     }
+
+
+
+
 }

@@ -35,15 +35,24 @@ public class LCS {
     }
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
         String s1 = sc.nextLine();
         String s2 = sc.nextLine();
-        System.out.println(lcs(s1,s2,s1.length(),s2.length()));
-      /* for(int x=0;x<s1.length()+1;x++){
-            for(int y=0;y<s2.length()+1;y++){
-                System.out.print(dp[x][y]+" ");
-            }
-            System.out.println(" ");
-        }*/
-        System.out.println(lcsString(s1,s2,s1.length(),s2.length()));
+        int k = sc.nextInt();
+        int lcs = lcs(s1,s2,n1,n2);
+        String s ="";
+        if(s1.length()>s2.length())
+            s = s2;
+        else
+            s = s1;
+        for(int x=0;x<s.length();x++)
+        {
+            if(k==0||s1.charAt(x)!=s2.charAt(x))
+                break;
+            else
+                lcs++;
+        }
+        System.out.println(lcs);
     }
 }
